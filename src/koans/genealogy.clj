@@ -45,17 +45,17 @@
 (meditations
  "What goal(s) defines Johns relation to Bobby?"
  (= (run* [q]
-      (__ 'John q))
+      (child 'John q))
     '(Bobby))
 
  "What goal satisfies this relation?"
  (= (run* [q]
-      (__ 'Bobby q))
+      (parent 'Bobby q))
     '(John Mary))
 
  "Write a goal that makes this program satisfiable."
  (letfn [(plays [x y]
-           __)]
+           (conde [(== x 'Jenny) (== y 'guitar)]))]
   (= (run* [q]
        (daughter 'Martha q)
        (plays q 'guitar))
@@ -63,7 +63,7 @@
 
  "Write the grandchild relation."
  (letfn [(grandchild [x y]
-           __)]
+           (grandparent y x))]
   (= (run* [q]
        (grandchild q 'Harold))
      '(George Martha)))
