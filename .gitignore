@@ -20,4 +20,5 @@
 docs/**
 autodoc/**
 .idea
+target
 *.iml
